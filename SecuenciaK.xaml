@@ -94,9 +94,9 @@
         </Sequence>
       </ui:InterruptibleWhile.Body>
       <ui:InterruptibleWhile.Condition>
-        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="i&lt;=numero" />
+        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="i&lt;=numero" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_2" />
       </ui:InterruptibleWhile.Condition>
     </ui:InterruptibleWhile>
-    <WriteLine DisplayName="Escribir línea" sap:VirtualizedContainerService.HintSize="339.2,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;la suma es :&quot; &amp; suma]" />
+    <WriteLine DisplayName="Escribir línea" sap:VirtualizedContainerService.HintSize="339.2,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;la suma para sergio es  :&quot; &amp; suma]" />
   </Sequence>
 </Activity>
