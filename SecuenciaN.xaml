@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="SecuenciaM" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="949.6,1136.8" sap2010:WorkflowViewState.IdRef="SecuenciaM_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="SecuenciaN" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="949.6,1363.2" sap2010:WorkflowViewState.IdRef="SecuenciaN_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <sco:Collection x:TypeArguments="x:String">
+    <scg:List x:TypeArguments="x:String" Capacity="23">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -24,10 +24,10 @@
       <x:String>System.Windows.Markup</x:String>
       <x:String>System.Collections.ObjectModel</x:String>
       <x:String>System.Activities.DynamicUpdate</x:String>
-    </sco:Collection>
+    </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <sco:Collection x:TypeArguments="AssemblyReference">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="24">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -52,13 +52,13 @@
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
-    </sco:Collection>
+    </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SecuenciaM" sap:VirtualizedContainerService.HintSize="601.6,1072" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SecuenciaN" sap:VirtualizedContainerService.HintSize="601.6,1298.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:Int32[]" Name="lista">
         <Variable.Default>
-          <mva:VisualBasicValue x:TypeArguments="s:Int32[]" ExpressionText="{}{20,30,4,70,90,100,5,2}" />
+          <mva:VisualBasicValue x:TypeArguments="s:Int32[]" ExpressionText="{}{3,4,5,6,7}" />
         </Variable.Default>
       </Variable>
       <Variable x:TypeArguments="x:Int32" Name="i">
@@ -66,9 +66,10 @@
           <Literal x:TypeArguments="x:Int32" />
         </Variable.Default>
       </Variable>
-      <Variable x:TypeArguments="x:Int32" Name="mayor">
+      <Variable x:TypeArguments="x:Int32" Name="numeroBuscar" />
+      <Variable x:TypeArguments="x:Boolean" Name="encontrado">
         <Variable.Default>
-          <Literal x:TypeArguments="x:Int32" />
+          <Literal x:TypeArguments="x:Boolean" />
         </Variable.Default>
       </Variable>
     </Sequence.Variables>
@@ -77,24 +78,31 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <WriteLine DisplayName="Escribir línea" sap:VirtualizedContainerService.HintSize="560,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;la lista es &quot; &amp; lista(0) &amp; lista(1) &amp; lista(2) &amp;lista(3)]" />
-    <ui:InterruptibleWhile DisplayName="Mientras" sap:VirtualizedContainerService.HintSize="560,672" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Cuadro de diálogo de entrada" sap:VirtualizedContainerService.HintSize="560,241.6" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="dame el numero a buscar" Title="Caja">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:Int32">[numeroBuscar]</OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <WriteLine DisplayName="Escribir línea" sap:VirtualizedContainerService.HintSize="560,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;numero a buscar&quot; &amp;numeroBuscar]" />
+    <ui:InterruptibleWhile DisplayName="Mientras" sap:VirtualizedContainerService.HintSize="560,569.6" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
       <ui:InterruptibleWhile.Body>
-        <Sequence DisplayName="Cuerpo" sap:VirtualizedContainerService.HintSize="524.8,504.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Cuerpo" sap:VirtualizedContainerService.HintSize="524.8,402.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="variable1" />
+          </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <WriteLine DisplayName="Escribir línea" sap:VirtualizedContainerService.HintSize="483.2,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;El numero es &quot; &amp;lista(i)]" />
-          <If Condition="[mayor&lt;lista(i)]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="483.2,209.6" sap2010:WorkflowViewState.IdRef="If_1">
+          <If Condition="[numeroBuscar=lista(i)]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="483.2,209.6" sap2010:WorkflowViewState.IdRef="If_1">
             <If.Then>
               <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_2">
                 <Assign.To>
-                  <OutArgument x:TypeArguments="x:Int32">[mayor]</OutArgument>
+                  <OutArgument x:TypeArguments="x:Boolean">[encontrado]</OutArgument>
                 </Assign.To>
                 <Assign.Value>
-                  <InArgument x:TypeArguments="x:Int32">[lista(i)]</InArgument>
+                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
                 </Assign.Value>
               </Assign>
             </If.Then>
@@ -113,7 +121,13 @@
         <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="i&lt;lista.Length" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
       </ui:InterruptibleWhile.Condition>
     </ui:InterruptibleWhile>
-    <WriteLine DisplayName="Escribir línea" sap:VirtualizedContainerService.HintSize="560,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[&quot;el mayor es &quot;&amp; mayor]" />
-    <WriteLine DisplayName="Escribir línea" sap:VirtualizedContainerService.HintSize="560,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="termino" />
+    <If Condition="[encontrado]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="560,212" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <WriteLine DisplayName="Escribir línea" sap:VirtualizedContainerService.HintSize="228.8,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="se ha encontrado" />
+      </If.Then>
+      <If.Else>
+        <WriteLine DisplayName="Escribir línea" sap:VirtualizedContainerService.HintSize="228.8,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="no se ha encontrado" />
+      </If.Else>
+    </If>
   </Sequence>
 </Activity>
