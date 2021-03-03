@@ -1,11 +1,12 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="FuncionNumerosSuma" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="tope" Type="InArgument(x:Int32)" />
+    <x:Property Name="resultado" Type="OutArgument(x:Int32)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>968,680</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>968,677.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>FuncionNumerosSuma_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -62,7 +63,7 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="FuncionNumerosSuma" sap:VirtualizedContainerService.HintSize="380.8,615.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="FuncionNumerosSuma" sap:VirtualizedContainerService.HintSize="380.8,612.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="i">
         <Variable.Default>
@@ -110,6 +111,13 @@
         <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="i&lt;tope" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
       </ui:InterruptibleWhile.Condition>
     </ui:InterruptibleWhile>
-    <WriteLine DisplayName="Escribir línea" sap:VirtualizedContainerService.HintSize="339.2,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;La suma vale &quot; &amp; suma]" />
+    <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="339.2,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[resultado]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">[suma]</InArgument>
+      </Assign.Value>
+    </Assign>
   </Sequence>
 </Activity>
